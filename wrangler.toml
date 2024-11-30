@@ -1,0 +1,39 @@
+name = "hono-api-starter-develop"
+main = "src/index.ts"
+compatibility_date = "2024-10-29"
+compatibility_flags = [ "nodejs_compat" ]
+
+[vars]
+CORS_ALLOWED_ORIGINS = "https://hono-api-starter-develop.pages.dev"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "hono-api-starter-db"
+database_id = "<dev-stage-database-id>"
+migrations_dir = "./drizzle/migrations"
+
+[ai]
+binding = "AI"
+
+[observability]
+enabled = true
+head_sampling_rate = 1
+
+[env.prod]
+name = "hono-api-starter"
+
+[env.prod.vars]
+CORS_ALLOWED_ORIGINS = "https://hono-api-starter.pages.dev"
+
+[[env.prod.d1_databases]]
+binding = "DB"
+database_name = "hono-api-starter-db"
+database_id = "<prod-stage-database-id>"
+migrations_dir = "./drizzle/migrations"
+
+[env.prod.ai]
+binding = "AI"
+
+[env.prod.observability]
+enabled = true
+head_sampling_rate = 1

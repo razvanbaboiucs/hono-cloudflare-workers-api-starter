@@ -1,0 +1,25 @@
+{
+  "name": "hono-api-starter",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy --minify",
+    "types": "wrangler types",
+    "db:up:local": "drizzle-kit up --config drizzle-local.config.ts",
+    "db:generate:local": "drizzle-kit generate --config drizzle-local.config.ts",
+    "db:studio:local": "drizzle-kit studio --config drizzle-local.config.ts",
+    "db:migrate:local": "wrangler d1 migrations apply hono-api-starter-db --local"
+  },
+  "dependencies": {
+    "@libsql/client": "^0.14.0",
+    "@types/bcryptjs": "^2.4.6",
+    "bcryptjs": "^2.4.3",
+    "drizzle-kit": "^0.27.1",
+    "drizzle-orm": "^0.36.0",
+    "drizzle-zod": "^0.5.1",
+    "hono": "^4.6.8"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20241022.0",
+    "wrangler": "^3.91.0"
+  }
+}

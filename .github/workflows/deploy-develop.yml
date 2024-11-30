@@ -1,0 +1,25 @@
+name: Deploy develop
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    name: Deploy develop
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+      - name: Deploy
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          preCommands: |
+            echo "📁 Generate types for develop env"
+            wrangler types
+            echo "✅ 📁 Finished generating types for develop env"
+            echo "🚀 Apply D1 database migrations for develop env"
+            wrangler d1 migrations apply DB --remote
+            echo "✅ 🚀 Finished applying D1 database migrations for develop env"
