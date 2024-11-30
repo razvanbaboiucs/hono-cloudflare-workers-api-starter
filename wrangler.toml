@@ -9,7 +9,7 @@ CORS_ALLOWED_ORIGINS = "https://hono-api-starter-develop.pages.dev"
 [[d1_databases]]
 binding = "DB"
 database_name = "hono-api-starter-db"
-database_id = "<dev-stage-database-id>"
+database_id = "a29a3c05-34be-4274-a1c7-2f3f03d8c58a"
 migrations_dir = "./drizzle/migrations"
 
 [ai]
@@ -28,7 +28,7 @@ CORS_ALLOWED_ORIGINS = "https://hono-api-starter.pages.dev"
 [[env.prod.d1_databases]]
 binding = "DB"
 database_name = "hono-api-starter-db"
-database_id = "<prod-stage-database-id>"
+database_id = "5357493c-2366-43fb-ba7a-30ff933f6d0d"
 migrations_dir = "./drizzle/migrations"
 
 [env.prod.ai]
