@@ -4,15 +4,9 @@
 
 Adapt the schema in `src/db/schema.ts`.
 
-Run `npm run db:generate:local` to generate the migration files. The generated files will be in `drizzle/migrations`.
+Run `npm run db:generate` to generate the migration files. The generated files will be in `drizzle/migrations`.
 
 Run `npm run db:migrate:local` to apply the migrations to your local database.
-
-### Local database studio
-
-To start the drizzle studio for your local database, run `npm run db:studio:local`.
-
-To properly configure drizzle to work with the local wrangler generated database, you need to change the `dbCredentials.url` in `drizzle-local.config.ts` to the correct path to your local database (only the file name should be different in general).
 
 ## Wrangler
 

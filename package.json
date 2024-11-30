@@ -4,9 +4,9 @@
     "dev": "wrangler dev",
     "deploy": "wrangler deploy --minify",
     "types": "wrangler types",
-    "db:up:local": "drizzle-kit up --config drizzle-local.config.ts",
-    "db:generate:local": "drizzle-kit generate --config drizzle-local.config.ts",
-    "db:studio:local": "drizzle-kit studio --config drizzle-local.config.ts",
+    "db:up": "drizzle-kit up",
+    "db:generate": "drizzle-kit generate",
+    "db:studio": "drizzle-kit studio",
     "db:migrate:local": "wrangler d1 migrations apply hono-api-starter-db --local"
   },
   "dependencies": {
