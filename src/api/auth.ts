@@ -14,46 +14,26 @@ const app = new Hono<{ Bindings: Env }>();
 app.post("/login", async (c) => {
   const { email, password }: { email: string; password: string } =
     await c.req.json();
-  
-    console.info("extract email password", email, password);
-
   if (email.trim() === "" || password.trim() === "") {
     console.error("Email or password is empty");
     throw new HTTPException(400, { message: "Email or password is empty" });
   }
 
-  console.info("email and password are not empty");
-
   const db = getDatabase(c);
   const user = await db.select().from(users).where(eq(users.email, email));
-
-  console.info("get user from db", user);
 
   if (user.length === 0) {
     console.error("User not found");
     throw new HTTPException(400, { message: "User not found" });
   }
 
-  console.info("user is not empty");
-
-  try {
-    if (!bcrypt.compareSync(password, user[0].password)) {
-      console.error("Password or email is incorrect");
-      throw new HTTPException(400, { message: "Password or email is incorrect" });
-    }
+  if (!bcrypt.compareSync(password, user[0].password)) {
+    console.error("Password or email is incorrect");
+    throw new HTTPException(400, { message: "Password or email is incorrect" });
   }
-  catch(error) {
-    console.error("bcrypt error", error);
-    throw error;
-  }
-
-  console.info("password is correct");
 
   const token = await generateJwtToken(email, c);
-
-  console.info("token is generated", token);
   c.header("Authorization", `Bearer ${token}`);
-  console.info("token is set in header");
 
   return c.text("User logged in successfully");
 });
@@ -66,11 +46,10 @@ app.post("/register", async (c) => {
     console.error("Email or password is empty");
     throw new HTTPException(400, { message: "Email or password is empty" });
   }
-
   
   const salt = bcrypt.genSaltSync(10);
   const hashedPassword = bcrypt.hashSync(password, salt);
-  
+
   const db = getDatabase(c);
   const user = await db.select().from(users).where(eq(users.email, email));
 
