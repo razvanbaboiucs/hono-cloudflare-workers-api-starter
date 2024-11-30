@@ -27,9 +27,16 @@ app.post("/login", async (c) => {
     console.error("User not found");
     throw new HTTPException(400, { message: "User not found" });
   }
-  if (!bcrypt.compareSync(password, user[0].password)) {
-    console.error("Password or email is incorrect");
-    throw new HTTPException(400, { message: "Password or email is incorrect" });
+
+  try {
+    if (!bcrypt.compareSync(password, user[0].password)) {
+      console.error("Password or email is incorrect");
+      throw new HTTPException(400, { message: "Password or email is incorrect" });
+    }
+  }
+  catch(error) {
+    console.error("bcrypt error", error);
+    throw error;
   }
 
   const token = await generateJwtToken(email, c);

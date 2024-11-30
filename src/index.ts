@@ -11,15 +11,6 @@ import ai from "./api/ai";
 const app = new Hono<{Bindings: Env}>();
 
 // Global middlewares
-app.use(async (_, next) => {
-  try {
-    await next();
-  }
-  catch (error) {
-    console.error(error);
-    throw error;
-  }
-})
 app.use(logger());
 app.use(
   cors({
