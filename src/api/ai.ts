@@ -2,7 +2,9 @@ import { Hono } from "hono";
 import { authenticated } from "../middleware/authenticated";
 import { HTTPException } from "hono/http-exception";
 import { getDatabase } from "../db";
-import { questions } from "../db/schema";
+import { questions, users } from "../db/schema";
+import { admin } from "../middleware/admin";
+import { eq } from "drizzle-orm";
 
 const app = new Hono<{ Bindings: Env }>();
 
@@ -44,6 +46,25 @@ app.post("/question", async (c) => {
   });
 
   return c.json(aiResponse);
+});
+
+app.get("/questions", async (c, next) => admin(c, next));
+app.get("/questions", async (c) => {
+  const db = getDatabase(c);
+  const questionList = await db
+    .select({
+      userId: users.id,
+      userEmail: users.email,
+      questionId: questions.id,
+      question: questions.question,
+      answer: questions.answer,
+      modelUsed: questions.modelUsed,
+      processingTime: questions.processingTime,
+    })
+    .from(questions)
+    .innerJoin(users, eq(questions.userId, users.id));
+
+    return c.json(questionList);
 });
 
 export default app;
