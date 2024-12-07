@@ -130,6 +130,12 @@ Run `npm run db:generate` to generate the migration files. The generated files w
 
 Run `npm run db:migrate:local` to apply the migrations to your local database.
 
+### Interact with the deployed D1 database
+
+You can install the Drizzle Studio chrome extension to interact with the deployed D1 database: open your Cloudflare dashboard and a new popup should appear at the bottom of the page that activates the Drizzle Studio extension.
+
+You can then query, create, update and delete records in the database, export and import data, and more.
+
 ## Wrangler
 
 Wrangler is the cli tool used to deploy workers to Cloudflare and to configure the Cloudflare infrastructure bindings for those workers.
