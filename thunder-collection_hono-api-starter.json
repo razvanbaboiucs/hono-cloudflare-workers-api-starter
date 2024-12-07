@@ -1,0 +1,156 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "hono-api-starter",
+    "collectionId": "fe5986d1-5398-4404-b740-58626c5b8d76",
+    "dateExported": "2024-12-07T12:01:13.913Z",
+    "version": "1.2",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "43adc526-e568-421b-acd7-57e7f6b4f2e1",
+            "colId": "fe5986d1-5398-4404-b740-58626c5b8d76",
+            "containerId": "",
+            "name": "login",
+            "url": "/api/v1/auth/login",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-11-11T10:09:03.144Z",
+            "modified": "2024-11-30T16:13:27.607Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\": \"razvanbaboiu@gmail.com\",\n  \"password\": \"pass\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "97d62675-a95b-448c-bc5b-5176d5a12624",
+            "colId": "fe5986d1-5398-4404-b740-58626c5b8d76",
+            "containerId": "",
+            "name": "register",
+            "url": "/api/v1/auth/register",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-11-11T10:10:57.897Z",
+            "modified": "2024-11-11T10:11:33.364Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\": \"razvanbaboiu@gmail.com\",\n  \"password\": \"pass\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "8b09778b-6ae9-48f7-924d-116e835c6eee",
+            "colId": "fe5986d1-5398-4404-b740-58626c5b8d76",
+            "containerId": "",
+            "name": "currentUser",
+            "url": "/api/v1/users/current",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2024-11-11T11:04:51.228Z",
+            "modified": "2024-12-07T12:00:21.377Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJhenZhbmJhYm9pdUBnbWFpbC5jb20iLCJleHAiOjE3MzM2MTU5OTZ9.T0EaE45p2_GXLTUMNwckrWxPAZ7oKA9xX3q1TM7hq5w"
+            }
+        },
+        {
+            "_id": "cdcb03dc-f68b-4a4d-accd-1659fcb7773e",
+            "colId": "fe5986d1-5398-4404-b740-58626c5b8d76",
+            "containerId": "",
+            "name": "all users",
+            "url": "/api/v1/users",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2024-11-11T13:27:46.496Z",
+            "modified": "2024-11-30T14:44:20.858Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJhYm9pdXJhenZhbkB5YWhvby5jb20iLCJleHAiOjE3MzMwMjAzMDV9.jVbDXKCPq6-6nfRyDdvY8Dmy--T4oy0cX3frg4AmjdQ"
+            }
+        },
+        {
+            "_id": "9980f21f-fbba-41aa-a571-2810061fa9b9",
+            "colId": "fe5986d1-5398-4404-b740-58626c5b8d76",
+            "containerId": "",
+            "name": "user by id",
+            "url": "/api/v1/users/1",
+            "method": "GET",
+            "sortNum": 50000,
+            "created": "2024-11-30T14:08:52.386Z",
+            "modified": "2024-11-30T14:44:28.148Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJhYm9pdXJhenZhbkB5YWhvby5jb20iLCJleHAiOjE3MzMwMjAzMDV9.jVbDXKCPq6-6nfRyDdvY8Dmy--T4oy0cX3frg4AmjdQ"
+            }
+        },
+        {
+            "_id": "fbb3230f-048d-4247-8111-eef6131bbdb4",
+            "colId": "fe5986d1-5398-4404-b740-58626c5b8d76",
+            "containerId": "",
+            "name": "update user by id",
+            "url": "/api/v1/users/1",
+            "method": "PATCH",
+            "sortNum": 60000,
+            "created": "2024-11-30T14:26:45.223Z",
+            "modified": "2024-11-30T14:45:35.358Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\": \"baboiurazvan@yahoo.com\",\n  \"role\": \"add\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJhYm9pdXJhenZhbkB5YWhvby5jb20iLCJleHAiOjE3MzMwMjAzMDV9.jVbDXKCPq6-6nfRyDdvY8Dmy--T4oy0cX3frg4AmjdQ"
+            }
+        },
+        {
+            "_id": "d61cb2d3-a1d0-49e6-87a1-7a1117ff89f0",
+            "colId": "fe5986d1-5398-4404-b740-58626c5b8d76",
+            "containerId": "",
+            "name": "ai question",
+            "url": "/api/v1/ai/question",
+            "method": "POST",
+            "sortNum": 70000,
+            "created": "2024-11-30T15:04:45.006Z",
+            "modified": "2024-11-30T17:50:54.809Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"question\": \"I have 10k euros in my bank account. What car should i buy if I like porsches?\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJhenZhbmJhYm9pdUBnbWFpbC5jb20iLCJleHAiOjE3MzMwMzIwOTB9.VkWlse5F3_vIX985CjQ0OxRlzuDs4sECVkLY6FgCgI0"
+            }
+        },
+        {
+            "_id": "b03ce0b5-2fbb-4e87-bd78-419c899ce93b",
+            "colId": "fe5986d1-5398-4404-b740-58626c5b8d76",
+            "containerId": "",
+            "name": "all questions",
+            "url": "/api/v1/ai/questions",
+            "method": "GET",
+            "sortNum": 80000,
+            "created": "2024-11-30T17:47:51.794Z",
+            "modified": "2024-11-30T17:50:28.617Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJhenZhbmJhYm9pdUBnbWFpbC5jb20iLCJleHAiOjE3MzMwMzIwOTB9.VkWlse5F3_vIX985CjQ0OxRlzuDs4sECVkLY6FgCgI0"
+            }
+        }
+    ],
+    "settings": {
+        "options": {
+            "baseUrl": "http://localhost:8787"
+        }
+    },
+    "ref": "JxuwZVKhE80IhB8ybVOTqhd8cfx_50t91b8kWGrgtUHglXXiH6gmzi17L6MkfsRuSM0i1ctuVOE7uHoi4nH5jA"
+}
