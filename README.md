@@ -91,7 +91,7 @@ BREVO_API_KEY=myverysecretstring
 
 4. Copy the API token and add it as a secret to the repository with the name `CLOUDFLARE_API_TOKEN`.
 5. Create a new D1 database for the development environment and copy the database ID. Edit the `wrangler.toml` file and add the database ID in the `d1_databases` section. Repeat the process for the D1 production database, but replace the `env.prod.d1_databases` section with the production database ID.
-6. Push the code to the master branch and wait for the Github Actions to deploy the project to Cloudflare.
+6. Push the code to the master branch and wait for the Github Actions to deploy the project to Cloudflare. Create a new branch `develop` for the development environment from the master branch.
 7. Add a new secret to the dev and prod deployed workers: `npx wrangler secret put JWT_SECRET`. Follow the steps and paste the JWT secret. To add the secret to the production environment run the command `npx wrangler secret put JWT_SECRET --env prod`.
 8. Adapt any other configurations in the `wrangler.toml` file as needed (like the CORS allowed origins).
 9. You are all set! 🔥 You can now use the API by sending requests to the Cloudflare Pages URL. You can find the URL in the Cloudflare dashboard under the Workers section.
