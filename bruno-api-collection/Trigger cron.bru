@@ -1,0 +1,15 @@
+meta {
+  name: Trigger cron
+  type: http
+  seq: 5
+}
+
+get {
+  url: http://localhost:8787/__scheduled?cron=0 0 * * *
+  body: none
+  auth: none
+}
+
+params:query {
+  cron: 0 0 * * *
+}
