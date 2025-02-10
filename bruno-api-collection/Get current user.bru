@@ -1,0 +1,19 @@
+meta {
+  name: Get current user
+  type: http
+  seq: 4
+}
+
+get {
+  url: http://localhost:8787/api/v1/users/current
+  body: none
+  auth: bearer
+}
+
+headers {
+  Authorization: {{auth_header}}
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvZUBlbWFpbC5jb20iLCJleHAiOjE3Mzg4OTU0MzR9.ic1Ex-qS0MHGFcQgz-3Ud73zChxDvajZKTtKqUKIlhw
+}

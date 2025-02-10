@@ -3,6 +3,9 @@ main = "src/index.ts"
 compatibility_date = "2024-10-29"
 compatibility_flags = [ "nodejs_compat" ]
 
+[triggers]
+crons = ["0 0 * * *"]
+
 [vars]
 CORS_ALLOWED_ORIGINS = "https://hono-api-starter-develop.pages.dev"
 
