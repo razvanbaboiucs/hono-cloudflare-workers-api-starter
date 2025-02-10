@@ -4,8 +4,9 @@ import { eq } from "drizzle-orm";
 import { users } from "../db/schema";
 import { generateJwtToken } from "../utils/generateJwtToken";
 import * as bcrypt from "bcryptjs";
-import { Role } from "../types/roles";
+import { Role, RoleType } from "../types/roles";
 import { getDatabase } from "../db";
+import { AppContext } from "../types/appContext";
 
 const app = new Hono<{ Bindings: Env }>();
 
@@ -38,6 +39,26 @@ app.post("/login", async (c) => {
 });
 
 app.post("/register", async (c) => {
+  await registerUser(c, Role.USER);
+
+  return c.text("User created successfully");
+});
+
+app.post("/register/super-admin", async (c) => {
+  const db = getDatabase(c);
+  const superAdmin = await db.select().from(users).where(eq(users.role, Role.SUPER_ADMIN));
+
+  if (superAdmin.length > 0) {
+    console.error("Super admin already exists");
+    throw new HTTPException(400, { message: "Super admin already exists" });
+  }
+
+  await registerUser(c, Role.SUPER_ADMIN);
+
+  return c.text("Super admin created successfully");
+});
+
+async function registerUser(c: AppContext, role: RoleType) {
   const { email, password }: { email: string; password: string } =
     await c.req.json();
 
@@ -59,12 +80,10 @@ app.post("/register", async (c) => {
 
   await db
     .insert(users)
-    .values({ email, password: hashedPassword, role: Role.USER });
+    .values({ email, password: hashedPassword, role });
 
   const token = await generateJwtToken(email, c);
   c.header("Authorization", `Bearer ${token}`);
-
-  return c.text("User created successfully");
-});
+}
 
 export default app;
