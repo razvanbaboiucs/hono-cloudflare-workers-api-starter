@@ -40,7 +40,7 @@ BREVO_API_KEY=myverysecretstring
 7. Run `npm run types` to generate the `worker-configuration.d.ts` file and to have access to the bindings.
 8. Run `npm run db:migrate:local` to create a local database and apply the existing migrations.
 9. Run `npm run dev` to start the development server.
-10. Using your favorit API client (if you use Thunder Client, import the api from the `thunder-collection_hono-api-starter.json` file), and send a register POST request to `http://localhost:8787/api/v1/auth/register` with the following body structure:
+10. Using your favorit API client (if you use Bruno, use the collection from the `./bruno-api-collection` folder), and send a register POST request to `http://localhost:8787/api/v1/auth/register/super-admin` with the following body structure:
 
 ```json
 {
@@ -49,16 +49,11 @@ BREVO_API_KEY=myverysecretstring
 }
 ```
 
-11. Send a login POST request to `http://localhost:8787/api/v1/auth/login` with the following body structure:
+11. This will create a super admin user. 
 
-```json
-{
-  "email": "test@test.com",
-  "password": "test"
-}
-```
+> **Note**: A super admin can only be registered once.
 
-12. You should receive a token in the response header `Authorization: Bearer <token>`.
+12. In the headers of the response, you should receive a token in the response header `Authorization: Bearer <token>`.
 13. Copy the token and send a GET request to `http://localhost:8787/api/v1/users` with the following header:
 
 ```json
@@ -69,6 +64,19 @@ BREVO_API_KEY=myverysecretstring
 
 14. You should receive the current user information in the response body.
 15. You are all set locally! Please feel free to explore the code and the API.
+
+### Testing cron jobs
+
+1. To test the cron job locally, you can use the `npm run dev:scheduled` command.
+2. This will start the development server and register a new endpoint at `http://localhost:8787/__scheduled`.
+3. To trigger cron jobs, you can do a GET request to `http://localhost:8787/__scheduled?cron=<cron-expression>`.
+
+```bash
+curl http://localhost:8787/__scheduled?cron=0+0+*+*+*
+```
+
+4. You can also use the `Trigger cron` request from the Bruno API collection.
+
 
 ### Deploying to Cloudflare
 
