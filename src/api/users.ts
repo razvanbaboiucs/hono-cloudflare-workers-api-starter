@@ -75,6 +75,7 @@ app.patch("/:id", async (c) => {
         console.error("Role is not valid");
         throw new HTTPException(400, { message: "Role is not valid" });
     }
+
     if (email && role) {
         await db.update(users).set({email, role}).where(eq(users.id, id));
     }
@@ -84,6 +85,7 @@ app.patch("/:id", async (c) => {
     if (role) {
         await db.update(users).set({role}).where(eq(users.id, id));
     }
+    
     return c.text("User updated successfully");
 });
 
