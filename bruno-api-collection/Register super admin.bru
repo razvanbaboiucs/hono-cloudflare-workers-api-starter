@@ -1,0 +1,22 @@
+meta {
+  name: Register super admin
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost:8787/api/v1/auth/register/super-admin
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "email": "super.admin@email.com",
+    "password": "super-admin"
+  }
+}
+
+script:post-response {
+  res.getHeader("authorization")
+}
