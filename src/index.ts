@@ -28,4 +28,16 @@ app.route("/api/v1/auth", auth);
 app.route("/api/v1/users", users);
 app.route("/api/v1/ai", ai);
 
-export default app;
+export default {
+  fetch: (request: Request, env: Env, ctx: ExecutionContext) => {
+    return app.fetch(request, env, ctx);
+  },
+
+  scheduled: (controller: ScheduledController, env: Env, ctx: ExecutionContext) => {
+    switch (controller.cron) {
+      case "0 0 * * *":
+        console.log("Scheduled triggered");
+        break;
+    }
+  },
+}

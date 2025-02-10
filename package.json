@@ -2,6 +2,7 @@
   "name": "hono-api-starter",
   "scripts": {
     "dev": "wrangler dev",
+    "dev:scheduled": "wrangler dev --test-scheduled",
     "deploy": "wrangler deploy --minify",
     "types": "wrangler types",
     "db:up": "drizzle-kit up",

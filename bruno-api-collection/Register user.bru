@@ -1,0 +1,22 @@
+meta {
+  name: Register user
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:8787/api/v1/auth/register
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "email": "joe@email.com",
+    "password": "password123"
+  }
+}
+
+script:post-response {
+  res.getHeader("authorization")
+}
